@@ -1,0 +1,302 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family:
+    "Microsoft YaHei",
+    "PingFang SC",
+    "Noto Sans CJK SC",
+    system-ui,
+    sans-serif;
+}
+
+button,
+select,
+textarea {
+  font: inherit;
+}
+
+.home-hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(260px, 420px);
+  align-items: center;
+  gap: 8vw;
+  padding: 0 8vw;
+}
+
+.hero-copy h1 {
+  margin: 0;
+  font-size: clamp(44px, 7vw, 92px);
+  line-height: 0.95;
+  font-weight: 700;
+}
+
+.hero-copy p {
+  max-width: 420px;
+  margin: 32px 0 0;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(140px, 1fr));
+  align-items: stretch;
+  gap: 20px;
+}
+
+.hero-actions button {
+  min-height: 120px;
+  padding: 24px;
+  text-align: left;
+}
+
+.chat-page {
+  max-width: 720px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 64px 24px;
+  text-align: center;
+}
+
+.chat-header h1 {
+  margin: 0;
+  font-size: 48px;
+}
+
+.chat-header p {
+  margin: 12px 0 0;
+}
+
+.chat-panel {
+  margin-top: 48px;
+  text-align: left;
+}
+
+.chat-messages {
+  display: grid;
+  gap: 24px;
+  max-height: 48vh;
+  overflow: auto;
+}
+
+.chat-message h2 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.chat-message p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.chat-form {
+  display: grid;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.chat-form textarea {
+  width: 100%;
+  resize: vertical;
+}
+
+.chat-form button {
+  justify-self: end;
+}
+
+.flower-generate-entry {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.garden-layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 25% 1fr;
+}
+
+.garden-sidebar {
+  padding: 32px 24px;
+  border-right: 1px solid currentColor;
+  overflow: auto;
+}
+
+.garden-nav {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.garden-nav a,
+.garden-nav button {
+  border: 0;
+  padding: 0;
+  color: inherit;
+  background: none;
+  text-decoration: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.garden-main {
+  min-width: 0;
+}
+
+.today-flower {
+  display: grid;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.today-flower h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.flower-card {
+  border: 1px solid currentColor;
+  padding: 14px;
+}
+
+.flower-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.flower-card p {
+  margin: 0;
+  line-height: 1.8;
+}
+
+.flower-stats {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flower-stat {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr) 40px;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.flower-stat-name {
+  font-weight: 700;
+}
+
+.flower-stat-track {
+  height: 12px;
+  display: block;
+  border: 1px solid currentColor;
+}
+
+.flower-stat-fill {
+  display: block;
+  height: 100%;
+  background: currentColor;
+}
+
+.flower-stat-value {
+  text-align: right;
+}
+
+.time-select {
+  display: grid;
+  gap: 8px;
+}
+
+.time-select select {
+  width: 100%;
+}
+
+.keyword-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.keyword-list li {
+  border: 1px solid currentColor;
+  padding: 6px 10px;
+}
+
+.flower-generate-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+}
+
+.flower-generate-panel {
+  width: min(920px, 100%);
+  min-height: 25vh;
+  display: grid;
+  align-content: center;
+  gap: 18px;
+}
+
+.flower-generate-panel h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.flower-generate-details {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.flower-generate-details h2 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.flower-generate-details p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.flower-generate-details .flower-stats {
+  text-align: left;
+}
+
+@media (max-width: 760px) {
+  .home-hero {
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: 48px;
+    padding-block: 64px;
+  }
+
+  .hero-copy h1 {
+    font-size: 44px;
+  }
+
+  .hero-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .garden-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .garden-sidebar {
+    border-right: 0;
+    border-bottom: 1px solid currentColor;
+  }
+}

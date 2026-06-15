@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>花灵 - 花园回响 EchoBloom</title>
+    <link rel="stylesheet" href="src/main.css">
+  </head>
+  <body>
+    <main>
+      <section class="chat-page" aria-labelledby="chat-title">
+        <header class="chat-header">
+          <h1 id="chat-title">花灵</h1>
+          <p>我是你的AI花园精灵</p>
+        </header>
+
+        <section class="chat-panel" aria-label="对话区域">
+          <div id="chat-messages" class="chat-messages">
+            <article class="chat-message" data-sender="spirit">
+              <h2>花灵</h2>
+              <p>告诉我你今天的故事，我来把它变成花。</p>
+            </article>
+          </div>
+
+          <form id="chat-form" class="chat-form">
+            <label for="chat-input">写下今天的故事</label>
+            <textarea id="chat-input" name="message" rows="4" required></textarea>
+            <button type="submit">发送</button>
+          </form>
+
+          <div id="flower-generate-entry" class="flower-generate-entry" hidden>
+            <button type="button" data-action="generate-today-flower">生成今日花朵</button>
+          </div>
+        </section>
+
+        <a href="index.html">返回首页</a>
+      </section>
+    </main>
+
+    <script src="src/chat.js"></script>
+  </body>
+</html>

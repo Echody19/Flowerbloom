@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>代码生成小花预览 - 花园回响 EchoBloom</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="/src/styles.css">
+  </head>
+  <body>
+    <div id="app" class="garden-shell">
+      <aside class="control-panel" aria-label="花圃控制">
+        <header class="brand">
+          <p>EchoBloom</p>
+          <h1>花园回响</h1>
+        </header>
+
+        <section class="panel-section">
+          <div class="section-heading">
+            <h2>视角</h2>
+            <button id="reset-camera" class="quiet-button" type="button">重置</button>
+          </div>
+          <div class="camera-readout">
+            <span>360°</span>
+            <span>平移</span>
+            <span>缩放</span>
+          </div>
+        </section>
+
+        <section class="panel-section">
+          <h2>当前花朵</h2>
+          <div id="empty-flower" class="empty-state">选择一朵花</div>
+          <dl id="flower-details" class="flower-details" hidden>
+            <div>
+              <dt>名字</dt>
+              <dd id="flower-name"></dd>
+            </div>
+            <div>
+              <dt>日期</dt>
+              <dd id="flower-date"></dd>
+            </div>
+            <div>
+              <dt>心情</dt>
+              <dd id="flower-mood"></dd>
+            </div>
+            <div>
+              <dt>记录</dt>
+              <dd id="flower-note"></dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="panel-section">
+          <h2>花圃参数</h2>
+          <label class="slider-row" for="height-scale">
+            <span>花朵高度</span>
+            <output id="height-value" for="height-scale">1.0</output>
+          </label>
+          <input id="height-scale" type="range" min="0.7" max="1.5" step="0.1" value="1">
+
+          <label class="slider-row" for="wind-scale">
+            <span>微风强度</span>
+            <output id="wind-value" for="wind-scale">0.5</output>
+          </label>
+          <input id="wind-scale" type="range" min="0" max="1" step="0.1" value="0.5">
+        </section>
+      </aside>
+
+      <main class="garden-stage">
+        <div id="garden-canvas" class="garden-canvas" aria-label="3D 花圃画布"></div>
+        <div id="hover-label" class="hover-label" hidden></div>
+        <div id="garden-status" class="status-pill"></div>
+      </main>
+    </div>
+
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>

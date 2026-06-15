@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>生成今日花朵 - 花园回响 EchoBloom</title>
+    <link rel="stylesheet" href="src/main.css">
+  </head>
+  <body>
+    <main class="flower-generate-page" aria-labelledby="flower-generate-title">
+      <section class="flower-generate-panel">
+        <h1 id="flower-generate-title">生成今日花朵</h1>
+
+        <div class="flower-generate-details">
+          <section aria-labelledby="generated-flower-name">
+            <h2 id="generated-flower-name">今日花名</h2>
+            <p>慢慢打开</p>
+          </section>
+
+          <section aria-labelledby="generated-flower-date">
+            <h2 id="generated-flower-date">生成日期</h2>
+            <p>2026.06.15</p>
+          </section>
+
+          <section aria-labelledby="generated-flower-language">
+            <h2 id="generated-flower-language">今日花语</h2>
+            <p>不是所有完成都会轻松，但它依然算数。</p>
+          </section>
+
+          <section aria-labelledby="generated-flower-stats">
+            <h2 id="generated-flower-stats">花朵特征</h2>
+            <ul id="generated-stats" class="flower-stats"></ul>
+          </section>
+        </div>
+
+        <button type="button" data-action="put-into-garden">放入花园</button>
+      </section>
+    </main>
+
+    <script src="src/flower-data.js"></script>
+    <script src="src/flower.js"></script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>我的花园 - 花园回响 EchoBloom</title>
+    <link rel="stylesheet" href="src/main.css">
+  </head>
+  <body>
+    <div class="garden-layout">
+      <aside class="garden-sidebar" aria-label="花园侧栏">
+        <nav class="garden-nav" aria-label="花园导航">
+          <button type="button" data-garden-view="echo">花园回响</button>
+          <button type="button" data-garden-view="today">今日花事</button>
+        </nav>
+
+        <div id="garden-sidebar-content" class="garden-sidebar-content" aria-live="polite"></div>
+      </aside>
+
+      <main id="garden-main" class="garden-main" aria-label="花园主页主区域"></main>
+    </div>
+
+    <script src="src/flower-data.js"></script>
+    <script src="src/garden.js"></script>
+  </body>
+</html>
