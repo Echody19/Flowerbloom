@@ -242,7 +242,7 @@ textarea {
 }
 
 .flower-generate-panel {
-  width: min(920px, 100%);
+  width: min(560px, 100%);
   min-height: 25vh;
   display: grid;
   align-content: center;
@@ -256,9 +256,14 @@ textarea {
 
 .flower-generate-details {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 16px;
-  align-items: start;
+  justify-items: center;
+  align-items: center;
+}
+
+.flower-generate-details > section {
+  width: 100%;
 }
 
 .flower-generate-details h2 {
@@ -272,6 +277,8 @@ textarea {
 }
 
 .flower-generate-details .flower-stats {
+  width: min(360px, 100%);
+  margin: 0 auto;
   text-align: left;
 }
 
