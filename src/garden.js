@@ -11,6 +11,7 @@ function renderKeywordChips() {
 }
 
 function renderTodayFlower() {
+  setCurrentGardenView(todayButton);
   sidebarContent.innerHTML = `
     <article class="today-flower" aria-labelledby="today-flower-heading">
       <h2 id="today-flower-heading">今日花事</h2>
@@ -55,6 +56,7 @@ function renderTodayFlower() {
 }
 
 function renderGardenEcho() {
+  setCurrentGardenView(echoButton);
   sidebarContent.innerHTML = `
     <article class="today-flower" aria-labelledby="garden-echo-heading">
       <h2 id="garden-echo-heading">花园回响</h2>
@@ -93,6 +95,12 @@ function renderGardenEcho() {
       </section>
     </article>
   `;
+}
+
+function setCurrentGardenView(currentButton) {
+  [echoButton, todayButton].forEach((button) => {
+    button.toggleAttribute('aria-current', button === currentButton);
+  });
 }
 
 echoButton.addEventListener('click', renderGardenEcho);

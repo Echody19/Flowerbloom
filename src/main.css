@@ -1,3 +1,13 @@
+:root {
+  --paper: #f4f4f4;
+  --panel: #ffffff;
+  --panel-muted: #e9e9e9;
+  --ink: #111111;
+  --line: #1f1f1f;
+  --line-soft: #9b9b9b;
+  --space-page: clamp(24px, 6vw, 72px);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -5,6 +15,8 @@
 body {
   margin: 0;
   min-width: 320px;
+  color: var(--ink);
+  background: var(--paper);
   font-family:
     "Microsoft YaHei",
     "PingFang SC",
@@ -13,10 +25,36 @@ body {
     sans-serif;
 }
 
+a {
+  color: inherit;
+}
+
 button,
 select,
 textarea {
+  border: 1px solid var(--line);
+  border-radius: 0;
+  color: inherit;
+  background: var(--panel);
   font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover,
+select:hover,
+textarea:hover {
+  background: var(--panel-muted);
+}
+
+button:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
 }
 
 .home-hero {
@@ -25,7 +63,11 @@ textarea {
   grid-template-columns: minmax(280px, 1fr) minmax(260px, 420px);
   align-items: center;
   gap: 8vw;
-  padding: 0 8vw;
+  padding: 0 var(--space-page);
+}
+
+.hero-copy {
+  max-width: 760px;
 }
 
 .hero-copy h1 {
@@ -45,22 +87,27 @@ textarea {
 .hero-actions {
   display: grid;
   grid-template-columns: repeat(2, minmax(140px, 1fr));
-  align-items: stretch;
   gap: 20px;
 }
 
 .hero-actions button {
-  min-height: 120px;
+  min-height: 144px;
   padding: 24px;
   text-align: left;
 }
 
 .chat-page {
-  max-width: 720px;
+  width: min(760px, 100%);
   min-height: 100vh;
   margin: 0 auto;
   padding: 64px 24px;
   text-align: center;
+}
+
+.chat-header {
+  padding: 24px;
+  border: 1px solid var(--line);
+  background: var(--panel);
 }
 
 .chat-header h1 {
@@ -73,20 +120,34 @@ textarea {
 }
 
 .chat-panel {
-  margin-top: 48px;
+  margin-top: 24px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  background: var(--panel);
   text-align: left;
 }
 
 .chat-messages {
   display: grid;
-  gap: 24px;
+  gap: 16px;
   max-height: 48vh;
   overflow: auto;
 }
 
+.chat-message {
+  padding: 14px;
+  border: 1px solid var(--line-soft);
+  background: var(--paper);
+}
+
+.chat-message[data-sender="owner"] {
+  margin-left: 15%;
+  background: var(--panel);
+}
+
 .chat-message h2 {
   margin: 0 0 8px;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .chat-message p {
@@ -97,12 +158,25 @@ textarea {
 .chat-form {
   display: grid;
   gap: 12px;
-  margin-top: 32px;
+  margin-top: 24px;
+}
+
+.chat-form label {
+  font-weight: 700;
 }
 
 .chat-form textarea {
   width: 100%;
+  min-height: 120px;
+  padding: 12px;
   resize: vertical;
+}
+
+.chat-form button,
+.flower-generate-entry button,
+.flower-generate-panel > button {
+  min-height: 44px;
+  padding: 8px 16px;
 }
 
 .chat-form button {
@@ -117,40 +191,47 @@ textarea {
 .garden-layout {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 25% 1fr;
+  grid-template-columns: minmax(280px, 25vw) minmax(0, 1fr);
 }
 
 .garden-sidebar {
-  padding: 32px 24px;
-  border-right: 1px solid currentColor;
+  height: 100vh;
+  padding: 24px;
   overflow: auto;
+  border-right: 1px solid var(--line);
+  background: var(--panel);
 }
 
 .garden-nav {
   display: grid;
-  gap: 16px;
-  align-content: start;
+  gap: 10px;
 }
 
-.garden-nav a,
 .garden-nav button {
-  border: 0;
-  padding: 0;
-  color: inherit;
-  background: none;
-  text-decoration: none;
+  min-height: 44px;
+  padding: 10px 12px;
   text-align: left;
-  cursor: pointer;
+}
+
+.garden-nav button[aria-current="page"] {
+  background: var(--panel-muted);
+  font-weight: 700;
 }
 
 .garden-main {
   min-width: 0;
+  min-height: 100vh;
+  background:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-color: #f7f7f7;
+  background-size: 40px 40px;
 }
 
 .today-flower {
   display: grid;
-  gap: 16px;
-  margin-top: 32px;
+  gap: 14px;
+  margin-top: 24px;
 }
 
 .today-flower h2 {
@@ -159,8 +240,9 @@ textarea {
 }
 
 .flower-card {
-  border: 1px solid currentColor;
   padding: 14px;
+  border: 1px solid var(--line);
+  background: var(--panel);
 }
 
 .flower-card h3 {
@@ -196,13 +278,14 @@ textarea {
 .flower-stat-track {
   height: 12px;
   display: block;
-  border: 1px solid currentColor;
+  border: 1px solid var(--line);
+  background: var(--panel);
 }
 
 .flower-stat-fill {
   display: block;
   height: 100%;
-  background: currentColor;
+  background: var(--ink);
 }
 
 .flower-stat-value {
@@ -214,8 +297,14 @@ textarea {
   gap: 8px;
 }
 
+.time-select span {
+  font-weight: 700;
+}
+
 .time-select select {
   width: 100%;
+  min-height: 40px;
+  padding: 6px 8px;
 }
 
 .keyword-list {
@@ -228,8 +317,9 @@ textarea {
 }
 
 .keyword-list li {
-  border: 1px solid currentColor;
   padding: 6px 10px;
+  border: 1px solid var(--line);
+  background: var(--paper);
 }
 
 .flower-generate-page {
@@ -240,16 +330,14 @@ textarea {
 
 .flower-generate-panel {
   width: min(560px, 100%);
-  margin: 0 auto;
   min-height: 25vh;
   display: grid;
   align-content: center;
   gap: 18px;
-}
-
-.flower-generate-panel h1 {
-  margin: 0;
-  font-size: 28px;
+  margin: 0 auto;
+  padding: 24px;
+  border: 1px solid var(--line);
+  background: var(--panel);
 }
 
 .flower-generate-details {
@@ -301,7 +389,16 @@ textarea {
   }
 
   .garden-sidebar {
+    height: auto;
     border-right: 0;
-    border-bottom: 1px solid currentColor;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .garden-main {
+    min-height: 420px;
+  }
+
+  .chat-message[data-sender="owner"] {
+    margin-left: 0;
   }
 }
