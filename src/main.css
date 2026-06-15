@@ -234,15 +234,13 @@ textarea {
 
 .flower-generate-page {
   min-height: 100vh;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 24px;
+  padding: 75vh 24px 24px;
   text-align: center;
 }
 
 .flower-generate-panel {
   width: min(560px, 100%);
+  margin: 0 auto;
   min-height: 25vh;
   display: grid;
   align-content: center;
