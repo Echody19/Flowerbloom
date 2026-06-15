@@ -97,3 +97,4 @@ function renderGardenEcho() {
 
 echoButton.addEventListener('click', renderGardenEcho);
 todayButton.addEventListener('click', renderTodayFlower);
+renderTodayFlower();
