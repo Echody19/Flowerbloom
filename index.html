@@ -7,23 +7,61 @@
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="src/main.css">
   </head>
-  <body>
+  <body class="home-page">
     <main class="home-hero" aria-labelledby="home-title">
-      <div class="hero-copy">
-        <h1 id="home-title">花园回响 EchoBloom</h1>
+      <div class="home-scene" aria-hidden="true">
+        <div class="home-scene-layer home-scene-open"></div>
+        <div class="home-light-bloom"></div>
+        <div class="home-drift-particles">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <section class="hero-copy">
+        <p class="hero-kicker">EchoBloom</p>
+        <h1 id="home-title">
+          <span>花园回响</span>
+          <span>EchoBloom</span>
+        </h1>
 
         <p>
           记录今天的自己，<br>
           让时间慢慢长成一座花园。
         </p>
-      </div>
+      </section>
 
       <nav class="hero-actions" aria-label="首页操作">
-        <button type="button" data-action="enter-garden">进入我的花园</button>
-        <button type="button" data-action="chat-with-spirit">与花灵聊聊</button>
+        <button type="button" data-action="enter-garden">
+          <span class="action-icon" aria-hidden="true">↗</span>
+          <span class="action-text">
+            <span class="action-title">进入我的花园</span>
+            <span class="action-copy">查看今日花朵与花园回响</span>
+          </span>
+        </button>
+        <button type="button" data-action="chat-with-spirit">
+          <span class="action-icon" aria-hidden="true">✦</span>
+          <span class="action-text">
+            <span class="action-title">与花灵聊天</span>
+            <span class="action-copy">把今天的感受轻轻说出来</span>
+          </span>
+        </button>
       </nav>
+
+      <button
+        type="button"
+        class="home-sound-toggle"
+        data-action="toggle-sound"
+        aria-pressed="false"
+      >
+        声音
+      </button>
     </main>
 
-    <script src="src/home.js"></script>
+    <script type="module" src="src/page-audio.js"></script>
+    <script type="module" src="src/home.js"></script>
   </body>
 </html>

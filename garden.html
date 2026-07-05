@@ -4,23 +4,58 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>我的花园 - 花园回响 EchoBloom</title>
+    <link rel="icon" href="data:,">
     <link rel="stylesheet" href="src/main.css">
+    <link rel="stylesheet" href="src/garden-model-panel.css">
+    <link rel="stylesheet" href="src/garden-stage-model.css">
   </head>
   <body>
     <div class="garden-layout">
       <aside class="garden-sidebar" aria-label="花园侧栏">
+        <header class="garden-sidebar-header">
+          <button class="panel-collapse-button" type="button" id="back-home-button" aria-label="返回首页">←</button>
+          <button class="garden-brand" type="button" id="garden-brand" aria-label="双击修改花园用户名">
+            <span class="garden-brand-mark">✿</span>
+            <span id="garden-welcome" class="garden-welcome">
+              <span>欢迎来到</span><span class="garden-username">Echody</span><span>的花园</span>
+            </span>
+          </button>
+          <button class="garden-sidebar-toggle" type="button" id="garden-sidebar-toggle" aria-label="收起侧栏内容">×</button>
+        </header>
+
         <nav class="garden-nav" aria-label="花园导航">
           <button type="button" data-garden-view="echo">花园回响</button>
           <button type="button" data-garden-view="today">今日花事</button>
         </nav>
 
         <div id="garden-sidebar-content" class="garden-sidebar-content" aria-live="polite"></div>
+        <button class="garden-sidebar-resizer" type="button" id="garden-sidebar-resizer" aria-label="拖动调整侧栏宽度"></button>
       </aside>
 
-      <main id="garden-main" class="garden-main" aria-label="花园主页主区域"></main>
+      <main id="garden-main" class="garden-main" aria-label="花园主页主区域">
+        <div class="garden-sky-number garden-sky-number-large">30</div>
+        <div class="garden-sky-number garden-sky-number-mid">23</div>
+        <div class="garden-sky-number garden-sky-number-small">24</div>
+        <div class="garden-cloud garden-cloud-left"></div>
+        <div class="garden-cloud garden-cloud-right"></div>
+        <div id="garden-stage-model" class="garden-stage-model" aria-label="3D 花园模型"></div>
+        <div id="garden-stage-model-status" class="garden-stage-model-status">花园模型加载中</div>
+        <div class="garden-field" aria-hidden="true">
+          <span class="field-bloom bloom-yellow"></span>
+          <span class="field-bloom bloom-blue"></span>
+          <span class="field-bloom bloom-pink"></span>
+          <span class="field-bloom bloom-orange"></span>
+          <span class="field-bloom bloom-cream"></span>
+          <span class="field-bloom bloom-violet"></span>
+        </div>
+      </main>
     </div>
 
-    <script src="src/flower-data.js"></script>
-    <script src="src/garden.js"></script>
+    <script type="module" src="src/page-audio.js"></script>
+    <script type="module" src="src/flower-store.js"></script>
+    <script type="module" src="src/flower-data.js"></script>
+    <script type="module" src="src/garden.js"></script>
+    <script type="module" src="src/garden-stage-model.js"></script>
+    <script type="module" src="src/garden-model-panel.js"></script>
   </body>
 </html>

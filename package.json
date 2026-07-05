@@ -3,9 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
-    "dev": "vite --host 127.0.0.1",
-    "preview": "vite preview --host 127.0.0.1"
+    "build": "vite build --configLoader native",
+    "dev": "node scripts/dev-server.js",
+    "dev:vite": "vite --host 127.0.0.1 --configLoader native",
+    "preview": "vite preview --host 127.0.0.1 --configLoader native"
   },
   "dependencies": {
     "three": "latest",

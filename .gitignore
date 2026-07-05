@@ -1,3 +1,8 @@
 node_modules/
 dist/
 *.log
+.tmp-*.png
+garden-hua-dae-exact-check.png
+.env
+.env.local
+.env.*.local

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>真实模型诊断 - 花园回响 EchoBloom</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="src/model-preview.css">
+  </head>
+  <body>
+    <div class="model-shell">
+      <aside class="model-panel">
+        <header class="brand">
+          <p>EchoBloom</p>
+          <h1>真实模型诊断</h1>
+        </header>
+
+        <section class="panel-section">
+          <h2>模型状态</h2>
+          <dl class="model-stats">
+            <div>
+              <dt>文件</dt>
+              <dd>/models/meigui.glb</dd>
+            </div>
+            <div>
+              <dt>网格 / 材质</dt>
+              <dd><span id="mesh-count">读取中</span> / <span id="material-count">读取中</span></dd>
+            </div>
+            <div>
+              <dt>可识别部件</dt>
+              <dd id="part-summary">读取中</dd>
+            </div>
+          </dl>
+          <p id="model-warning" class="model-warning" hidden></p>
+        </section>
+
+        <section class="panel-section">
+          <h2>诊断选项</h2>
+          <label class="toggle-row">
+            <input id="diagnostic-colors" type="checkbox">
+            <span>使用诊断染色</span>
+          </label>
+          <p class="hint">如果 Blender 材质没有正确进入 glb，诊断染色会先按部件类型上色，方便确认导出了什么。</p>
+        </section>
+
+        <section class="panel-section">
+          <h2>八维映射</h2>
+          <div id="mapping-list" class="mapping-list"></div>
+        </section>
+
+        <section class="panel-section">
+          <h2>Flower DNA 调试</h2>
+          <div id="dna-controls" class="dna-controls"></div>
+        </section>
+
+        <section class="panel-section">
+          <h2>对象层级</h2>
+          <ol id="node-list" class="node-list"></ol>
+        </section>
+      </aside>
+
+      <main class="model-stage">
+        <div id="model-canvas" class="model-canvas"></div>
+        <div id="model-status" class="status-pill">加载模型中</div>
+      </main>
+    </div>
+
+    <script type="module" src="src/page-audio.js"></script>
+    <script type="module" src="src/model-preview.js"></script>
+  </body>
+</html>

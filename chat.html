@@ -3,15 +3,22 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>花灵 - 花园回响 EchoBloom</title>
+    <title>花灵聊天 - 花园回响 EchoBloom</title>
     <link rel="stylesheet" href="src/main.css">
   </head>
   <body>
-    <main>
-      <section class="chat-page" aria-labelledby="chat-title">
-        <header class="chat-header">
-          <h1 id="chat-title">花灵</h1>
-          <p>我是你的AI花园精灵</p>
+    <main class="bloom-workspace chat-workspace">
+      <section class="chat-page glass-panel" aria-labelledby="chat-title">
+        <header class="chat-intro">
+          <div class="chat-intro-topline">
+            <a class="soft-back-link" href="index.html">返回首页</a>
+            <span>花灵在线</span>
+          </div>
+          <h1 id="chat-title">花灵聊天</h1>
+          <p class="chat-intro-copy">
+            <span>把今天发生的事写给花灵，</span>
+            <span>它会把你的情绪整理成一朵今日花。</span>
+          </p>
         </header>
 
         <section class="chat-panel" aria-label="对话区域">
@@ -23,20 +30,22 @@
           </div>
 
           <form id="chat-form" class="chat-form">
-            <label for="chat-input">写下今天的故事</label>
-            <textarea id="chat-input" name="message" rows="4" required></textarea>
+            <p id="chat-error" class="chat-error" role="alert" hidden></p>
+            <textarea
+              id="chat-input"
+              name="message"
+              rows="4"
+              placeholder="例如：今天完成了一件很重要的事，也有一点遗憾。"
+              required
+            ></textarea>
             <button type="submit">发送</button>
           </form>
-
-          <div id="flower-generate-entry" class="flower-generate-entry" hidden>
-            <button type="button" data-action="generate-today-flower">生成今日花朵</button>
-          </div>
         </section>
-
-        <a href="index.html">返回首页</a>
       </section>
     </main>
 
-    <script src="src/chat.js"></script>
+    <script type="module" src="src/page-audio.js"></script>
+    <script type="module" src="src/flower-store.js"></script>
+    <script type="module" src="src/chat.js"></script>
   </body>
 </html>

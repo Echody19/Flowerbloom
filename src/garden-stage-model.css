@@ -1,0 +1,67 @@
+.garden-stage-model {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  min-width: 0;
+}
+
+.garden-main {
+  background: #fff;
+}
+
+.garden-main::before,
+.garden-main::after,
+.garden-sky-number,
+.garden-cloud,
+.garden-field {
+  display: none;
+}
+
+.garden-stage-model canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.garden-stage-model canvas:active {
+  cursor: grabbing;
+}
+
+.garden-stage-model-status {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  z-index: 5;
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  border-radius: 8px;
+  padding: 7px 11px;
+  color: #5c665e;
+  background: rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    0 8px 18px rgba(88, 73, 78, 0.08);
+  font-size: 12px;
+  font-weight: 800;
+  pointer-events: none;
+}
+
+.garden-stage-model-status[hidden] {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .garden-stage-model {
+    inset: 4% 0 4%;
+  }
+
+  .garden-stage-model-status {
+    right: 14px;
+    bottom: 14px;
+  }
+}
