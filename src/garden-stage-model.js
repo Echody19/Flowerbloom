@@ -6,7 +6,6 @@ const stageHost = document.querySelector('#garden-stage-model');
 const statusNode = document.querySelector('#garden-stage-model-status');
 const publicAsset = (path) => `${import.meta.env.BASE_URL}${path}`;
 const GARDEN_STAGE_MODEL_URL = publicAsset('models/hua.glb');
-const GARDEN_PREVIEW_MODEL_URL = publicAsset('models/garden-home.glb');
 const SHOULD_FACE_CAMERA = true;
 const HUA_PLOT_NODE_NAMES = [
   'instance_0',
@@ -91,49 +90,32 @@ function mountGardenStageModel(host, status) {
   resize();
   window.addEventListener('resize', resize);
 
-  let activeModel = null;
-  let faceCameraObjects = [];
+  const faceCameraObjects = [];
   const loader = new GLTFLoader();
-  let hasFullModel = false;
-
-  showStatus(status, '花园预览加载中...');
-
-  loader.load(
-    GARDEN_PREVIEW_MODEL_URL,
-    (gltf) => {
-      if (hasFullModel) {
-        return;
+  loader
+    .loadAsync(GARDEN_STAGE_MODEL_URL)
+    .then((gltf) => {
+      const model = gltf.scene;
+      faceCameraObjects.push(...prepareModel(model, camera));
+      addOriginalPlotFrames(model);
+      normalizeModel(model);
+      modelRoot.add(model);
+      setInitialView(model, camera, controls);
+      initializeFaceCameraOffsets(faceCameraObjects, camera);
+      if (status) {
+        status.hidden = true;
       }
-
-      showModel(gltf.scene, { isPreview: true });
-      showStatus(status, '花园模型加载中...');
-    },
-    undefined,
-    () => {
-      showStatus(status, '花园模型加载中...');
-    },
-  );
-
-  loader.load(
-    GARDEN_STAGE_MODEL_URL,
-    (gltf) => {
-      hasFullModel = true;
-      showModel(gltf.scene);
-      hideStatus(status);
-    },
-    (event) => {
-      updateModelProgress(status, event);
-    },
-    (error) => {
+    })
+    .catch((error) => {
       console.error(error);
-
-      if (!activeModel) {
-        showModel(createFallbackGardenModel(), { isFallback: true });
+      const model = createFallbackGardenModel();
+      normalizeModel(model);
+      modelRoot.add(model);
+      setInitialView(model, camera, controls);
+      if (status) {
+        status.hidden = true;
       }
-
-      showStatus(status, '模型加载失败，已显示轻量花园');
-    },
-  );
+    });
 
   renderer.setAnimationLoop(animate);
 
@@ -154,75 +136,6 @@ function mountGardenStageModel(host, status) {
     camera.updateProjectionMatrix();
     renderer.setSize(width, height, false);
   }
-
-  function showModel(model, options = {}) {
-    const { isPreview = false, isFallback = false } = options;
-
-    if (activeModel) {
-      modelRoot.remove(activeModel);
-      disposeModel(activeModel);
-    }
-
-    activeModel = model;
-    faceCameraObjects = prepareModel(model, camera);
-
-    if (!isPreview && !isFallback) {
-      addOriginalPlotFrames(model);
-    }
-
-    normalizeModel(model);
-    modelRoot.add(model);
-    setInitialView(model, camera, controls);
-    initializeFaceCameraOffsets(faceCameraObjects, camera);
-  }
-}
-
-function showStatus(status, text) {
-  if (!status) {
-    return;
-  }
-
-  status.hidden = false;
-  status.textContent = text;
-}
-
-function hideStatus(status) {
-  if (!status) {
-    return;
-  }
-
-  status.hidden = true;
-}
-
-function updateModelProgress(status, event) {
-  if (!status || !event) {
-    return;
-  }
-
-  const total = Number(event.total);
-  if (!Number.isFinite(total) || total <= 0) {
-    showStatus(status, '花园模型加载中...');
-    return;
-  }
-
-  const percent = Math.min(99, Math.max(1, Math.round((event.loaded / total) * 100)));
-  showStatus(status, `花园模型加载中 ${percent}%`);
-}
-
-function disposeModel(model) {
-  model.traverse((object) => {
-    if (!object.isMesh) {
-      return;
-    }
-
-    object.geometry?.dispose();
-
-    const materials = Array.isArray(object.material) ? object.material : [object.material];
-    materials.forEach((material) => {
-      material?.map?.dispose();
-      material?.dispose();
-    });
-  });
 }
 
 function addLights(scene) {
